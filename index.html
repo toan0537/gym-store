@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GymFit Store — Đồ thể thao gym chất lượng cao. Áo, quần, phụ kiện cho Powerlifting, Cardio, Yoga.">
   <title>GymFit Store — Đồ Thể Thao Gym Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>">
@@ -14,7 +16,7 @@
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="#" class="logo">
+      <a href="#" class="logo" aria-label="Về trang chủ GymFit">
         <div class="logo-icon">G</div>
         <span class="logo-text">Gym<span>Fit</span></span>
       </a>
@@ -173,7 +175,7 @@
       </div>
       <div class="search-wrapper">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm...">
+        <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm sản phẩm">
       </div>
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">Tất cả</button>
@@ -198,15 +200,15 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="#" class="logo">
+            <a href="#" class="logo" aria-label="Về trang chủ GymFit">
               <div class="logo-icon">G</div>
               <span class="logo-text">Gym<span>Fit</span></span>
             </a>
             <p class="footer-desc">Đồ thể thao gym premium cho những người đam mê sức mạnh.</p>
             <div class="social-links">
-              <a href="#" class="social-link">FB</a>
-              <a href="#" class="social-link">IG</a>
-              <a href="#" class="social-link">TT</a>
+            <a href="#" class="social-link" aria-label="Facebook">FB</a>
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="TikTok">TT</a>
             </div>
           </div>
           <div class="footer-nav">
@@ -231,8 +233,8 @@
             <h4>Nhận ưu đãi</h4>
             <p>Đăng ký để nhận deal giảm giá mới nhất.</p>
             <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('.subscribe-btn').textContent='ĐÃ ĐĂNG KÝ ✓';">
-              <input type="email" placeholder="Email của bạn..." required>
-              <button type="submit" class="subscribe-btn">ĐĂNG KÝ</button>
+              <input type="email" placeholder="Email của bạn..." required aria-label="Email của bạn">
+              <button type="submit" class="subscribe-btn" aria-label="Đăng ký nhận ưu đãi">ĐĂNG KÝ</button>
             </form>
           </div>
         </div>
@@ -245,8 +247,8 @@
     </div>
   </footer>
 
-  <script src="js/products.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/products.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

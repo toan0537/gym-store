@@ -25,6 +25,37 @@ function setupMobileMenu() {
     });
 }
 
+function applyFilters() {
+    const activeCategoryBtn = document.querySelector('.filter-btn.active');
+    const activeSportBtn = document.querySelector('.sport-btn.active');
+    const searchInput = document.getElementById('search-input');
+
+    const category = activeCategoryBtn ? activeCategoryBtn.dataset.filter : 'all';
+    const sport = activeSportBtn ? activeSportBtn.dataset.sport : 'all';
+    const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+    let filtered = products;
+
+    if (category !== 'all') {
+        filtered = filtered.filter(p => p.category === category);
+    }
+
+    if (sport !== 'all') {
+        filtered = filtered.filter(p => p.sport === sport);
+    }
+
+    if (query !== '') {
+        filtered = filtered.filter(p =>
+            p.name.toLowerCase().includes(query) ||
+            p.description.toLowerCase().includes(query) ||
+            p.category.toLowerCase().includes(query)
+        );
+    }
+
+    renderProducts(filtered);
+    animateCards();
+}
+
 function setupFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     if (filterBtns.length === 0) return;
@@ -32,11 +63,7 @@ function setupFilters() {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            const filter = btn.dataset.filter;
-            let filtered = products;
-            if (filter !== 'all') { filtered = products.filter(p => p.category === filter); }
-            renderProducts(filtered);
-            animateCards();
+            applyFilters();
         });
     });
 }
@@ -48,11 +75,7 @@ function setupSportFilters() {
         btn.addEventListener('click', () => {
             sportBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            const sport = btn.dataset.sport;
-            let filtered = products;
-            if (sport !== 'all') { filtered = products.filter(p => p.sport === sport); }
-            renderProducts(filtered);
-            animateCards();
+            applyFilters();
         });
     });
 }
@@ -94,18 +117,8 @@ function setupSmoothScroll() {
 function setupSearch() {
     const searchInput = document.getElementById('search-input');
     if (!searchInput) return;
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
-        if (query === '') { renderProducts(products); }
-        else {
-            const filtered = products.filter(p =>
-                p.name.toLowerCase().includes(query) ||
-                p.description.toLowerCase().includes(query) ||
-                p.category.toLowerCase().includes(query)
-            );
-            renderProducts(filtered);
-        }
-        animateCards();
+    searchInput.addEventListener('input', () => {
+        applyFilters();
     });
 }
 
